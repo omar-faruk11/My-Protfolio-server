@@ -28,7 +28,7 @@ async function run() {
     const projectCollection = client.db("projects").collection("project");
     console.log('connected');
     // read all data
-    app.get('/projects', async (req, res) => {
+    app.get('/omar/projects', async (req, res) => {
       const q = req.query;
       const coursor = projectCollection.find(q);
       const result = await coursor.toArray();
@@ -42,7 +42,7 @@ async function run() {
     });
     // read a data by id
     // http://localhost:5000/bikes/626c843b9e3c0e5df2c06ce9
-    app.get('/project/:id', async (req, res) => {
+    app.get('/omar/projects/:id', async (req, res) => {
       const id = req.params.id;
       const find = {
         _id: ObjectId(id)
@@ -57,7 +57,7 @@ async function run() {
 }
 run().catch(console.dir);
 
-app.get('/', (req, res) => {
+app.get('/omar', (req, res) => {
   res.send('Hi, I am your awesome server');
 });
 
